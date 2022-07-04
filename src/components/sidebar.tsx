@@ -1,41 +1,70 @@
 import {
   Box,
-  Text,
-  Button,
   VStack,
   IconButton,
   useColorModeValue,
   HStack,
-  Heading
+  Heading,
+  Center
 } from 'native-base'
 import { Feather } from '@expo/vector-icons'
 import { DrawerContentComponentProps } from '@react-navigation/drawer'
 import { useCallback } from 'react'
+import MenuButton from './menu-button'
+import ThemeToggle from './theme-toggle'
 
 const Sidebar = (props: DrawerContentComponentProps) => {
-  const { navigation } = props
+  const { state, navigation } = props
   const handleBackButton = useCallback(() => {
     navigation.closeDrawer()
   }, [navigation])
+  const currentRoute = state.routeNames[state.index]
+
+  const handleMainButton = useCallback(() => {
+    navigation.navigate('Main')
+  }, [navigation])
+
+  const handleAboutButton = useCallback(() => {
+    navigation.navigate('About')
+  }, [navigation])
 
   return (
-    <Box flex={1} p={7} mt={4}>
-      <VStack flex={1} space={2}>
+    <Box flex={1} p={7} bg={useColorModeValue('gray.100', 'gray.800')}>
+      <VStack flex={1} space={1} mt={'18px'}>
         <HStack justifyContent='flex-end'>
           <IconButton
             borderRadius={100}
-            borderColor={useColorModeValue('blue.300', 'darkBlue.700')}
             _icon={{
               as: Feather,
               name: 'chevron-left',
               size: 6,
-              color: useColorModeValue('blue.800', 'darkBlue.700')
+              color: useColorModeValue('gray.800', 'blue.50')
             }}
             onPress={handleBackButton}
           />
         </HStack>
-        <Heading>Get your things done!</Heading>
+        <Heading mb={5}>Get your things done!</Heading>
+        <MenuButton
+          active={currentRoute === 'Main'}
+          icon={'inbox'}
+          onPress={handleMainButton}
+        >
+          To Do
+        </MenuButton>
+        <MenuButton
+          active={currentRoute === 'About'}
+          icon={'info'}
+          onPress={handleAboutButton}
+        >
+          About
+        </MenuButton>
       </VStack>
+      <Center>
+        <HStack>
+          {/*Add settings later*/}
+          <ThemeToggle />
+        </HStack>
+      </Center>
     </Box>
   )
 }
