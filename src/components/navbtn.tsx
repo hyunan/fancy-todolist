@@ -10,15 +10,16 @@ const Navbtn = () => {
     navigation.openDrawer()
   }, [navigation])
   return (
-    <Box flex={1} mt={8} p={3}>
-      <HStack justifyContent='flex-start'>
+    <Box>
+      <HStack justifyContent='flex-start' ml={2}>
         <IconButton
+          borderRadius={100}
           borderColor={'black'}
           _icon={{
             as: Feather,
             name: 'menu',
             size: 6,
-            color: useColorModeValue('gray.800', 'white')
+            color: useColorModeValue('gray.800', 'blue.50')
           }}
           onPress={handleOpenButton}
         />
