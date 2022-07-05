@@ -46,24 +46,22 @@ const Sidebar = (props: DrawerContentComponentProps) => {
         <Heading mb={5}>Get your things done!</Heading>
         <MenuButton
           active={currentRoute === 'Main'}
-          icon={'inbox'}
+          icon={'list'}
           onPress={handleMainButton}
         >
           To Do
         </MenuButton>
         <MenuButton
           active={currentRoute === 'About'}
-          icon={'info'}
+          icon={'settings'}
           onPress={handleAboutButton}
         >
-          About
+          Settings
         </MenuButton>
       </VStack>
       <Center>
-        <HStack>
-          {/*Add settings later*/}
-          <ThemeToggle />
-        </HStack>
+        {/*Add settings later*/}
+        <ThemeToggle />
       </Center>
     </Box>
   )

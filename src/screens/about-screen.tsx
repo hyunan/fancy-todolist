@@ -5,7 +5,7 @@ import Navbtn from '../components/navbtn'
 const AboutScreen = () => {
   return (
     <Box bg={useColorModeValue('white', 'gray.900')} flex={1}>
-      <MastHead title='About this App'>
+      <MastHead title='Settings'>
         <Navbtn />
       </MastHead>
       <ScrollView>
