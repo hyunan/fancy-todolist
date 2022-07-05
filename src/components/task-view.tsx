@@ -1,13 +1,19 @@
-import { Box, ScrollView, useColorModeValue } from 'native-base'
+import {
+  Box,
+  Icon,
+  IconButton,
+  ScrollView,
+  useColorModeValue,
+  VStack
+} from 'native-base'
 import React from 'react'
 import Task from './task-tile'
 
 interface Props {
   listOfTasks: string[]
-  listOfCompleted: string[]
 }
 
-export default function TaskView({ listOfTasks, listOfCompleted }: Props) {
+export default function TaskView({ listOfTasks }: Props) {
   return (
     <ScrollView
       bg={useColorModeValue('gray.100', 'gray.800')}
@@ -15,12 +21,11 @@ export default function TaskView({ listOfTasks, listOfCompleted }: Props) {
       ml={'16px'}
       mr={'16px'}
     >
-      {listOfTasks.map((item, index) => {
-        return <Task key={index} active={true} taskDetails={item} />
-      })}
-      {listOfCompleted.map((item, index) => {
-        return <Task key={index} active={false} taskDetails={item} />
-      })}
+      <VStack space={2} pt={'20px'} pl={'20px'}>
+        {listOfTasks.map((item, index) => {
+          return <Task key={index} active={true} taskDetails={item} />
+        })}
+      </VStack>
     </ScrollView>
   )
 }
