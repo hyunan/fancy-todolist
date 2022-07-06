@@ -28,6 +28,10 @@ const Sidebar = (props: DrawerContentComponentProps) => {
     navigation.navigate('About')
   }, [navigation])
 
+  const handleNotesButton = useCallback(() => {
+    navigation.navigate('Notes')
+  }, [navigation])
+
   return (
     <Box flex={1} p={7} bg={useColorModeValue('gray.100', 'gray.800')}>
       <VStack flex={1} space={1} mt={'18px'}>
@@ -52,15 +56,21 @@ const Sidebar = (props: DrawerContentComponentProps) => {
           To Do
         </MenuButton>
         <MenuButton
+          active={currentRoute === 'Notes'}
+          icon={'edit'}
+          onPress={handleNotesButton}
+        >
+          Notes
+        </MenuButton>
+        <MenuButton
           active={currentRoute === 'About'}
-          icon={'settings'}
+          icon={'info'}
           onPress={handleAboutButton}
         >
-          Settings
+          About
         </MenuButton>
       </VStack>
       <Center>
-        {/*Add settings later*/}
         <ThemeToggle />
       </Center>
     </Box>
