@@ -10,7 +10,7 @@ export default function ThemeToggle() {
         onTrackColor={'blue.500'}
         isChecked={colorMode === 'dark'}
         onToggle={toggleColorMode}
-      ></Switch>
+      />
     </HStack>
   )
 }

@@ -59,7 +59,7 @@ const MainScreen = () => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
         <HStack space={3} alignItems='center'>
-          <Container w='65%'>
+          <Container w='66%'>
             <Input
               placeholder='What needs to be done?'
               color={useColorModeValue('black', 'white')}
