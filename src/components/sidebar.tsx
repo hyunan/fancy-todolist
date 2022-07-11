@@ -57,10 +57,10 @@ const Sidebar = (props: DrawerContentComponentProps) => {
         </MenuButton>
         <MenuButton
           active={currentRoute === 'Notes'}
-          icon={'edit'}
+          icon={'calendar'}
           onPress={handleNotesButton}
         >
-          Notes
+          Dates
         </MenuButton>
         <MenuButton
           active={currentRoute === 'About'}
