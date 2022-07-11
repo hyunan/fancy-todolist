@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import {
   Box,
   useColorModeValue,
@@ -7,8 +8,8 @@ import {
   HStack,
   Container
 } from 'native-base'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Feather } from '@expo/vector-icons'
-import { useState } from 'react'
 import MastHead from '../components/mast'
 import Navbtn from '../components/navbtn'
 import { Platform, Alert } from 'react-native'
@@ -22,11 +23,38 @@ const MainScreen = () => {
     'Go grocery shopping'
   ])
 
+  useEffect(() => {
+    getData
+  }, [])
+
   const handleAddTask = () => {
     if (task !== '') {
       listOfTasks.push(task)
+      storeData(listOfTasks)
     }
     setTask('')
+  }
+
+  const getData = async () => {
+    let vals = await AsyncStorage.getItem('@storage_tasks')
+    if (vals !== null) {
+      setListOfTasks(JSON.parse(vals))
+    }
+  }
+
+  const storeData = async (value: string[]) => {
+    try {
+      let saveData = JSON.stringify(value)
+      await AsyncStorage.setItem('@storage_tasks', saveData)
+      let vals = await AsyncStorage.getItem('@storage_tasks')
+      if (vals !== null) {
+        setListOfTasks(JSON.parse(vals))
+        console.log(vals)
+      }
+    } catch (e) {
+      //saving error
+      console.log('lmao get fucked')
+    }
   }
 
   const deleteAllTasks = () => {
@@ -37,7 +65,10 @@ const MainScreen = () => {
       },
       {
         text: 'Yes',
-        onPress: () => setListOfTasks([])
+        onPress: () => {
+          setListOfTasks([])
+          AsyncStorage.removeItem('@storage_tasks')
+        }
       }
     ])
   }

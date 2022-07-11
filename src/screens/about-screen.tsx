@@ -32,7 +32,7 @@ const AboutScreen = () => {
             </Text>
             <Avatar source={require('../assets/pfp.png')} size='xl' />
             <Center>
-              <Text fontWeight='medium'>Crafted carefully by Ray An</Text>
+              <Text fontWeight='medium'>Created by Ray An</Text>
             </Center>
           </VStack>
         </Box>
