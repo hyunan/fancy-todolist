@@ -17,3 +17,4 @@ A simple todo list app that I made to get to get my life in line.
 yarn install
 yarn start
 ```
+name: TaskNotes

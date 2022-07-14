@@ -28,8 +28,8 @@ const Sidebar = (props: DrawerContentComponentProps) => {
     navigation.navigate('About')
   }, [navigation])
 
-  const handleNotesButton = useCallback(() => {
-    navigation.navigate('Notes')
+  const handleDatesButton = useCallback(() => {
+    navigation.navigate('Dates')
   }, [navigation])
 
   return (
@@ -56,9 +56,9 @@ const Sidebar = (props: DrawerContentComponentProps) => {
           To Do
         </MenuButton>
         <MenuButton
-          active={currentRoute === 'Notes'}
+          active={currentRoute === 'Dates'}
           icon={'calendar'}
-          onPress={handleNotesButton}
+          onPress={handleDatesButton}
         >
           Dates
         </MenuButton>
