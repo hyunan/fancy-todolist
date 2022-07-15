@@ -32,9 +32,13 @@ const Sidebar = (props: DrawerContentComponentProps) => {
     navigation.navigate('Dates')
   }, [navigation])
 
+  const handleArchiveButton = useCallback(() => {
+    navigation.navigate('Archives')
+  }, [navigation])
+
   return (
     <Box flex={1} p={7} bg={useColorModeValue('gray.100', 'gray.800')}>
-      <VStack flex={1} space={1} mt={'18px'}>
+      <VStack flex={1} space={1} mt={'32px'}>
         <HStack justifyContent='flex-end'>
           <IconButton
             borderRadius={100}
@@ -61,6 +65,13 @@ const Sidebar = (props: DrawerContentComponentProps) => {
           onPress={handleDatesButton}
         >
           Dates
+        </MenuButton>
+        <MenuButton
+          active={currentRoute === 'Archives'}
+          icon={'archive'}
+          onPress={handleArchiveButton}
+        >
+          Recently Deleted
         </MenuButton>
         <MenuButton
           active={currentRoute === 'About'}

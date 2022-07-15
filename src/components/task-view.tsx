@@ -12,9 +12,10 @@ import Task from './task-tile'
 
 interface Props {
   listOfTasks: string[]
+  isActive: boolean
 }
 
-export default function TaskView({ listOfTasks }: Props) {
+export default function TaskView({ isActive, listOfTasks }: Props) {
   let empty = Object.keys(listOfTasks).length === 0
   if (empty) {
     return (
@@ -47,9 +48,9 @@ export default function TaskView({ listOfTasks }: Props) {
         ml={'16px'}
         mr={'16px'}
       >
-        <VStack space={2} pt={'20px'} pl={'20px'}>
+        <VStack space={2} mt={'20px'} ml={'20px'}>
           {listOfTasks.map((item, index) => {
-            return <Task key={index} active={true} taskDetails={item} />
+            return <Task key={index} active={isActive} taskDetails={item} />
           })}
         </VStack>
       </ScrollView>

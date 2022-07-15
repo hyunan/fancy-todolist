@@ -24,7 +24,7 @@ const MainScreen = () => {
   ])
 
   useEffect(() => {
-    getData
+    getData()
   }, [])
 
   const handleAddTask = () => {
@@ -44,21 +44,24 @@ const MainScreen = () => {
 
   const storeData = async (value: string[]) => {
     try {
-      let saveData = JSON.stringify(value)
-      await AsyncStorage.setItem('@storage_tasks', saveData)
+      await AsyncStorage.setItem('@storage_tasks', JSON.stringify(value))
       let vals = await AsyncStorage.getItem('@storage_tasks')
       if (vals !== null) {
         setListOfTasks(JSON.parse(vals))
-        console.log(vals)
+        console.log('from ' + vals)
       }
     } catch (e) {
       //saving error
-      console.log('lmao get fucked')
+      console.log('lmao get trolled: ' + e)
     }
   }
 
+  const backUpTasks = async (vale: string[]) => {
+    await AsyncStorage.setItem('@archived_tasks', JSON.stringify(vale))
+  }
+
   const deleteAllTasks = () => {
-    Alert.alert('About to delete the list', 'Are you sure you want to?', [
+    Alert.alert('About to archive the list', 'Are you sure you want to?', [
       {
         text: 'Cancel',
         style: 'cancel'
@@ -66,6 +69,7 @@ const MainScreen = () => {
       {
         text: 'Yes',
         onPress: () => {
+          backUpTasks(listOfTasks)
           setListOfTasks([])
           AsyncStorage.removeItem('@storage_tasks')
         }
@@ -78,7 +82,7 @@ const MainScreen = () => {
       <MastHead title="Today's Tasks">
         <Navbtn />
       </MastHead>
-      <TaskView listOfTasks={listOfTasks} />
+      <TaskView listOfTasks={listOfTasks} isActive={true} />
       <KeyboardAvoidingView
         pb={3}
         justifyContent='center'
@@ -114,7 +118,7 @@ const MainScreen = () => {
                   as: Feather,
                   size: '14px',
                   name: 'plus',
-                  color: useColorModeValue('white', 'black')
+                  color: useColorModeValue('white', 'gray.800')
                 }}
                 _pressed={{
                   backgroundColor: 'blue.400'
@@ -125,15 +129,15 @@ const MainScreen = () => {
                 p={3.5}
                 borderRadius={15}
                 size='md'
-                backgroundColor='red.500'
+                backgroundColor='green.500'
                 _icon={{
                   as: Feather,
                   size: '14px',
-                  name: 'trash-2',
-                  color: useColorModeValue('white', 'black')
+                  name: 'archive',
+                  color: useColorModeValue('white', 'gray.800')
                 }}
                 _pressed={{
-                  backgroundColor: 'red.400'
+                  backgroundColor: 'green.400'
                 }}
                 onPress={deleteAllTasks}
               />
@@ -146,6 +150,3 @@ const MainScreen = () => {
 }
 
 export default MainScreen
-function target(target: any): (target: number) => void {
-  throw new Error('Function not implemented.')
-}

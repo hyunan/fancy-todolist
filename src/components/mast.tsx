@@ -8,7 +8,7 @@ interface Props {
 
 export default function MastHead({ children, title }: Props) {
   return (
-    <Box pt={'45px'} pb={1}>
+    <Box pt={'60px'} pb={1}>
       <HStack alignItems='center'>
         {children}
         <Heading pl={3}>{title}</Heading>
