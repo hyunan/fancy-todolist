@@ -9,7 +9,7 @@ export default function DatesScreen() {
         <Navbtn />
       </MastHead>
       <ScrollView>
-        <Text>Hello</Text>
+        <Text>Coming Soon</Text>
       </ScrollView>
     </Box>
   )

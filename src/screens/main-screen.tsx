@@ -48,7 +48,7 @@ const MainScreen = () => {
       let vals = await AsyncStorage.getItem('@storage_tasks')
       if (vals !== null) {
         setListOfTasks(JSON.parse(vals))
-        console.log('from ' + vals)
+        console.log('sending: ' + vals)
       }
     } catch (e) {
       //saving error
@@ -56,8 +56,8 @@ const MainScreen = () => {
     }
   }
 
-  const backUpTasks = async (vale: string[]) => {
-    await AsyncStorage.setItem('@archived_tasks', JSON.stringify(vale))
+  const backUpTasks = async (value: string[]) => {
+    await AsyncStorage.setItem('@archived_tasks', JSON.stringify(value))
   }
 
   const deleteAllTasks = () => {
