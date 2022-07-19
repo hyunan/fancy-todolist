@@ -56,9 +56,9 @@ const MainScreen = () => {
     }
   }
 
-  const backUpTasks = async (value: string[]) => {
+  /*const backUpTasks = async (value: string[]) => {
     await AsyncStorage.setItem('@archived_tasks', JSON.stringify(value))
-  }
+  }*/
 
   const deleteAllTasks = () => {
     Alert.alert('About to archive the list', 'Are you sure you want to?', [
@@ -69,7 +69,6 @@ const MainScreen = () => {
       {
         text: 'Yes',
         onPress: () => {
-          backUpTasks(listOfTasks)
           setListOfTasks([])
           AsyncStorage.removeItem('@storage_tasks')
         }
