@@ -15,9 +15,9 @@ interface Props {
   isActive: boolean
 }
 
-export default function TaskView({ isActive, listOfTasks }: Props) {
+export default function TaskView({ listOfTasks, isActive }: Props) {
   let empty = Object.keys(listOfTasks).length === 0
-  if (empty) {
+  if (empty || listOfTasks[0] === '') {
     return (
       <ScrollView
         bg={useColorModeValue('gray.100', 'gray.800')}
@@ -35,7 +35,7 @@ export default function TaskView({ isActive, listOfTasks }: Props) {
             color={useColorModeValue('black', 'white')}
           />
           <Text fontSize='30px' opacity={0.4} fontWeight='semibold'>
-            All done with your work!
+            No tasks yet!
           </Text>
         </Box>
       </ScrollView>

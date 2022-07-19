@@ -28,13 +28,13 @@ const Sidebar = (props: DrawerContentComponentProps) => {
     navigation.navigate('About')
   }, [navigation])
 
-  const handleDatesButton = useCallback(() => {
+  /*const handleDatesButton = useCallback(() => {
     navigation.navigate('Dates')
-  }, [navigation])
+  }, [navigation])*/
 
-  const handleArchiveButton = useCallback(() => {
+  /*const handleArchiveButton = useCallback(() => {
     navigation.navigate('Archives')
-  }, [navigation])
+  }, [navigation])*/
 
   return (
     <Box flex={1} p={7} bg={useColorModeValue('gray.100', 'gray.800')}>
@@ -59,7 +59,7 @@ const Sidebar = (props: DrawerContentComponentProps) => {
         >
           To Do
         </MenuButton>
-        <MenuButton
+        {/*<MenuButton
           active={currentRoute === 'Dates'}
           icon={'calendar'}
           onPress={handleDatesButton}
@@ -72,7 +72,7 @@ const Sidebar = (props: DrawerContentComponentProps) => {
           onPress={handleArchiveButton}
         >
           Recently Deleted
-        </MenuButton>
+        </MenuButton>*/}
         <MenuButton
           active={currentRoute === 'About'}
           icon={'info'}
