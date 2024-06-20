@@ -25,8 +25,7 @@ yarn start
   <img src='./doc/darkmode_main.png' alt='main_dark' width='200'/>
 </p>
 
-## Navigation Screen (More to come when I don't feel angry at React Native)
-
+## Navigation Screen
 <p align='left'>
   <img src='./doc/lightmode_sidebar.png' alt='sidebar_light' width='200'/>
   <img src='./doc/darkmode_sidebar.png' alt='sidebar_dark' width='200'/>
