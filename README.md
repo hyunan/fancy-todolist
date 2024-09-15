@@ -1,6 +1,6 @@
 # fancy-todolist
 
-A simple todo list app that I made to get to get my life in line. Also to learn how React Native works.
+A simple todo list app for learning how to use React Native and other things.
 
 ## Made with:
 
