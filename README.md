@@ -31,8 +31,6 @@ yarn start
   <img src='./doc/darkmode_sidebar.png' alt='sidebar_dark' width='200'/>
 </p>
 
-### Credit:
+### Buttons made with:
 
 - [Animated To Do Button](https://github.com/craftzdog/react-native-checkbox-reanimated)
-
-I had an archive screen planned out but had to redesign the app, so it's just in the works for now :)
